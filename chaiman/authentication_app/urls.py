@@ -19,14 +19,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from tweet import views
+from . import views
 
 # from django.contrib.auth.urls import views as auth_views
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("tweet/", include("tweet.urls")),
-    path("authentication_app/", include("authentication_app.urls")),
+    path("", views.register, name="register"),
+    path("login/", views.login_view, name="login_view"),
+    path("Home/", views.Home, name="Home"),
+    path("logout/", views.Logout_view, name="logout_view"),
     # path("tweet/register/", views.register, name="register"),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
